@@ -1,18 +1,14 @@
+from src.masks import get_mask_account, get_mask_card_number
+
 def mask_account_card(number: str) ->str:
-    if number != "":
-        if "Счет" in number:
-            mask_number = number[:-20] + "**" + number[-4:]
-            return mask_number
-        else:
-            mask_number = number[:-16] + number[-16:-12] + " " + number[-12:-10] + "** **** " + number[-4:]
-            return mask_number
+    """Функция, возвращающая маску карты или счета"""
+    if "Счет" in number:
+        return get_mask_account(number)
     else:
-        return "Неверный ввод"
+        return get_mask_card_number(number)
 
 
 def get_data(data: str) ->str:
-    if data != "":
-        new_data = data[8:10] + "." + data[5:7] + "." + data[0:4]
-        return new_data
-    else:
-        return "Неверный ввод"
+    """Функция, возвращающая дату в фотраме дд.мм.гггг"""
+    new_data = data[8:10] + "." + data[5:7] + "." + data[0:4]
+    return new_data
