@@ -13,7 +13,11 @@ def filter_by_state(input_list: list, state: str = "EXECUTED") -> list:
         return executed
 
 
-def sort_by_date(input_list: list) -> list:
+def sort_by_date(input_list: list, ascending: bool = True) -> list:
     """Функция сортировки списка словарей по убыванию даты"""
-    output_list = sorted(input_list, key=lambda dic: dic["date"], reverse=True)
-    return output_list
+    if ascending is False:
+        output_list = sorted(input_list, key=lambda dic: dic["date"], reverse=False)
+        return output_list
+    else:
+        output_list = sorted(input_list, key=lambda dic: dic["date"], reverse=True)
+        return output_list
