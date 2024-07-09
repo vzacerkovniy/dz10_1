@@ -11,5 +11,8 @@ def mask_account_card(number: str) -> str:
 
 def get_data(data: str) -> str:
     """Функция, возвращающая дату в фотраме дд.мм.гггг"""
-    new_data = data[8:10] + "." + data[5:7] + "." + data[0:4]
-    return new_data
+    no_symbol_str = data.replace(":", "").replace("-", "").replace(".", "").replace("T", "")
+    if data != "" and no_symbol_str.isdigit():
+        new_data = no_symbol_str[6:8] + "." + no_symbol_str[4:6] + "." + no_symbol_str[0:4]
+        return new_data
+    return "Неверный ввод"
