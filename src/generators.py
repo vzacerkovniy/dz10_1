@@ -1,4 +1,4 @@
-def filter_by_currency(transactions: list, currency: str) -> list:
+def filter_by_currency(transactions: list, currency: str):
     """Функция, фильтрующая список словарей в зависимости от кода валюты"""
     list_usd = []
     list_rub = []
@@ -8,11 +8,11 @@ def filter_by_currency(transactions: list, currency: str) -> list:
         elif transaction["operationAmount"]["currency"]["code"] == "RUB":
             list_rub.append(transaction)
     if currency == "USD":
-        return list_usd
+        yield list_usd
     elif currency == "RUB":
-        return list_rub
+        yield list_rub
     else:
-        return ["Валюта не поддерживается"]
+        yield ["Валюта не поддерживается"]
 
 
 # print(*filter_by_currency(transactions, "USD"))
