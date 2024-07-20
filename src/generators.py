@@ -8,9 +8,11 @@ def filter_by_currency(transactions: list, currency: str):
         elif transaction["operationAmount"]["currency"]["code"] == "RUB":
             list_rub.append(transaction)
     if currency == "USD":
-        yield list_usd
+        for usd in list_usd:
+            yield usd
     elif currency == "RUB":
-        yield list_rub
+        for rub in list_rub:
+            yield rub
     else:
         yield ["Валюта не поддерживается"]
 
